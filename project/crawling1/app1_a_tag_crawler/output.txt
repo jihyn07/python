@@ -1,0 +1,12 @@
+http://www.google.co.jp/imghp?hl=ja&tab=wi
+http://maps.google.co.jp/maps?hl=ja&tab=wl
+https://play.google.com/?hl=ja&tab=w8
+http://www.youtube.com/?gl=JP&tab=w1
+https://news.google.com/?tab=wn
+https://mail.google.com/mail/?tab=wm
+https://drive.google.com/?tab=wo
+https://www.google.co.jp/intl/ja/about/products?tab=wh
+http://www.google.co.jp/history/optout?hl=ja
+https://accounts.google.com/ServiceLogin?hl=ja&passive=true&continue=http://www.google.com/&ec=GAZAAQ
+http://www.google.co.jp/intl/ja/services/
+http://www.google.com/setprefdomain?prefdom=JP&prev=http://www.google.co.jp/&sig=K_817-gQOC1syFT4AQE2nsAClEJAA%3D

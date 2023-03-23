@@ -1,0 +1,7 @@
+2. 머신러닝 로직
+
+application.py 작성
+learner.py 작성
+templates/index.html 수정
+
+빅데이터생성 : data.js 참조

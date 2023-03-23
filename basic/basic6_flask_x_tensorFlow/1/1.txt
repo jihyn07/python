@@ -1,0 +1,5 @@
+1. flask 밑바탕 화면 만들기
+
+templates/index.html 작성
+application1.py 작성
+pip install -r pom.txt 로 라이브러리 설치

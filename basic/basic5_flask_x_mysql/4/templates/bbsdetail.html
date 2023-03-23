@@ -1,0 +1,55 @@
+{% include 'lib/top.html' ignore missing %}
+
+        <!-- About Section-->
+        <section class="page-section bg-primary text-white mb-0" id="about">
+            <div class="container">
+                <!-- About Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-white mb-0 mt-5">BBS VIEW</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- About Section Content-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        
+                        {% for bbs1 in bbs1row %}
+                        <h4>{{ bbs1['no'] }}. {{ bbs1['title'] }}</h4>
+                        <h5>Writer : {{ bbs1['writer'] }}</h5>
+                        <h6>{{ bbs1['uploadDate'] }}</h6>
+                        <hr />
+                        <h5>Content : {{ bbs1['content'] }}</h5>
+                        <br />
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <!-- About Section Button-->
+                <div class="text-center mt-4">
+
+                    {% if session['id'] %}
+                        {% if session['id'] == writer %}
+
+                        <a class="btn btn-xl btn-outline-light" href="bbsmodify?no={{no}}">
+                            <i class="fas fa-star mr-2"></i>
+                            Modify
+                        </a>
+                        <a class="btn btn-xl btn-outline-light" href="bbsdelete?no={{no}}">
+                            <i class="fas fa-star mr-2"></i>
+                            Delete
+                        </a>
+
+                        {% endif %}
+                    {% endif %}
+
+                    <a class="btn btn-xl btn-outline-light" href="bbs">
+                        <i class="fas fa-star mr-2"></i>
+                        List
+                    </a>
+                </div>
+            </div>
+        </section>
+
+{% include 'lib/bottom.html' ignore missing %}

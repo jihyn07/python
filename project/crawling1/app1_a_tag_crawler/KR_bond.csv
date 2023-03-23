@@ -1,0 +1,1139 @@
+﻿[<table bgcolor="#ffffff" class="css_td" width="159"><tbody><tr class="css_bar"><td align="right"><img onclick="exitCalendar();" src="/img/main/calendar_close.gif" style="cursor:hand"/> </td></tr><tr bgcolor="#ffffff"><td><table border="0" width="157"><tbody><tr><td align="center" style="padding:1px;"><font color="#ffffff"><b><span id="caption"><table cellspacing="3" width="153"> <tbody><tr> <td width="10px"></td> <td width="15px"> <input onclick="javascript:decMonth()" onfocus="this.blur()" onmouseout="window.status=''" onmouseover="window.status='이전 달(월)로 이동'" src="/img/main/calendar_prev.gif" title="이전 달(월)로 이동" type="image"/> </td> <td id="tdYear"> <span class="css_input4" id="spanYear" onclick="popUpYear()" onmouseout="this.className='css_input4';window.status=''" onmouseover="this.className='css_input3';window.status='년도 선택'" style="width:40px" title="년도 선택"> </span> </td> <td width="15px"><span id="spanYearBtn" onclick="popUpYear()" title="년도 선택"></span></td> <td id="tdMonth" width="25px"> <span class="css_input4" id="spanMonth" onclick="popUpMonth()" onmouseout="this.className='css_input4';window.status=''" onmouseover="this.className='css_input3';window.status='월 선택'" style="width:20px" title="월 선택"> </span> </td> <td width="15px"><span id="spanMonthBtn" onclick="popUpMonth()" title="월 선택"></span></td> <td width="15px"> <input onclick="javascript:incMonth()" onfocus="this.blur()" onmouseout="window.status=''" onmouseover="window.status='다음 달(월)로 이동'" src="/img/main/calendar_next.gif" title="다음 달(월)로 이동" type="image"/> </td> <td width="10px"></td> </tr></tbody></table></span></b></font></td></tr></tbody></table></td></tr><tr><td bgcolor="#ffffff" style="padding:1px"><span id="content2"></span></td></tr></tbody></table>, <table border="0" width="157"><tbody><tr><td align="center" style="padding:1px;"><font color="#ffffff"><b><span id="caption"><table cellspacing="3" width="153"> <tbody><tr> <td width="10px"></td> <td width="15px"> <input onclick="javascript:decMonth()" onfocus="this.blur()" onmouseout="window.status=''" onmouseover="window.status='이전 달(월)로 이동'" src="/img/main/calendar_prev.gif" title="이전 달(월)로 이동" type="image"/> </td> <td id="tdYear"> <span class="css_input4" id="spanYear" onclick="popUpYear()" onmouseout="this.className='css_input4';window.status=''" onmouseover="this.className='css_input3';window.status='년도 선택'" style="width:40px" title="년도 선택"> </span> </td> <td width="15px"><span id="spanYearBtn" onclick="popUpYear()" title="년도 선택"></span></td> <td id="tdMonth" width="25px"> <span class="css_input4" id="spanMonth" onclick="popUpMonth()" onmouseout="this.className='css_input4';window.status=''" onmouseover="this.className='css_input3';window.status='월 선택'" style="width:20px" title="월 선택"> </span> </td> <td width="15px"><span id="spanMonthBtn" onclick="popUpMonth()" title="월 선택"></span></td> <td width="15px"> <input onclick="javascript:incMonth()" onfocus="this.blur()" onmouseout="window.status=''" onmouseover="window.status='다음 달(월)로 이동'" src="/img/main/calendar_next.gif" title="다음 달(월)로 이동" type="image"/> </td> <td width="10px"></td> </tr></tbody></table></span></b></font></td></tr></tbody></table>, <table cellspacing="3" width="153"> <tbody><tr> <td width="10px"></td> <td width="15px"> <input onclick="javascript:decMonth()" onfocus="this.blur()" onmouseout="window.status=''" onmouseover="window.status='이전 달(월)로 이동'" src="/img/main/calendar_prev.gif" title="이전 달(월)로 이동" type="image"/> </td> <td id="tdYear"> <span class="css_input4" id="spanYear" onclick="popUpYear()" onmouseout="this.className='css_input4';window.status=''" onmouseover="this.className='css_input3';window.status='년도 선택'" style="width:40px" title="년도 선택"> </span> </td> <td width="15px"><span id="spanYearBtn" onclick="popUpYear()" title="년도 선택"></span></td> <td id="tdMonth" width="25px"> <span class="css_input4" id="spanMonth" onclick="popUpMonth()" onmouseout="this.className='css_input4';window.status=''" onmouseover="this.className='css_input3';window.status='월 선택'" style="width:20px" title="월 선택"> </span> </td> <td width="15px"><span id="spanMonthBtn" onclick="popUpMonth()" title="월 선택"></span></td> <td width="15px"> <input onclick="javascript:incMonth()" onfocus="this.blur()" onmouseout="window.status=''" onmouseover="window.status='다음 달(월)로 이동'" src="/img/main/calendar_next.gif" title="다음 달(월)로 이동" type="image"/> </td> <td width="10px"></td> </tr></tbody></table>, <table border="0" width="100%">
+<tbody><tr>
+<td>
+<!-- 채권 상세 정보 JLDINF91100 -->
+<script language="javascript" src="/RexServer/rexscript/rexpert.js"></script>
+<script language="javascript" src="/RexServer/rexscript/rexpert_properties.js"></script>
+<script language="JavaScript" src="/js/report.js"></script><!-- 레포트출력 스크립트 -->
+<script type="text/javascript">
+//<![CDATA[
+(function($){
+	$(document).ready(function(){
+		setViewTable();	//보여줄 항목 처리
+	});
+})(jQuery);
+//]]>
+
+//보여줄 항목 처리
+function setViewTable(){
+	//특이채권유형 - 주식채권관련인 경우
+	if('1' =="2"){
+		$("#title_nusual_bnd_tp_cd").attr("style", "display:;");
+		$("#id_nusual_bnd_tp_cd").attr("style", "display:;");
+	}
+	
+	//이자지급방법 - 변동금리형인경우
+	var int_pay_methd_cd = '13';
+	if( int_pay_methd_cd == "22" || int_pay_methd_cd == "23" ){
+		$("#title_int_pay_methd_cd").attr("style", "display:;");
+		$("#id_int_pay_methd_cd").attr("style", "display:;");
+	}
+	//옵션상세
+	var imbdopt_corpbnd_cd = '';
+	if( imbdopt_corpbnd_cd == "1" ){
+		$("#title_option").attr("style", "display:;");
+		$("#id_call_option").attr("style", "display:;");
+	}
+	if( imbdopt_corpbnd_cd == "2" ){
+		$("#title_option").attr("style", "display:;");
+		$("#id_put_option").attr("style", "display:;");
+	}
+	if( imbdopt_corpbnd_cd == "3" ){
+		$("#title_option").attr("style", "display:;");
+		$("#id_call_option").attr("style", "display:;");
+		$("#id_put_option").attr("style", "display:;");
+	}
+
+	//상환방법
+	var redmpt_methd_tp_cd = '1';
+	if( redmpt_methd_tp_cd == "2" ){
+		$("#title_redmpt_methd_tp_cd").attr("style", "display:;");
+		
+		// 분할상환구분 [1 원금, 2 원리금, 3 불균등]
+		if( '' == "1" || '' == "2" ){
+		    $("#id_redmpt_methd_tp_cd").attr("style", "display:;");		    
+		} else if( '' == "3" ){
+    		$("#id_redmpt_methd_tp_cd_list").attr("style", "display:;");
+		}		
+	}
+
+	//유동화
+	var asst_secutiz_tp_cd = '';
+	if( asst_secutiz_tp_cd != ""){
+		$("#title_asst_secutiz_tp_cd").attr("style", "display:;");
+		$("#id_asst_secutiz_tp_cd").attr("style", "display:;");
+	}
+}
+
+//정보 수정화면
+function open_modify(){
+	var stdcdType = $("#stdcd_type").val();
+	var stdCd = $("#std_cd").val();
+	var form = document.JLDINF91100;
+	$("#mod_del_cd").val("mod");
+	fn_passwordWin(form);
+}
+
+//삭제화면
+function open_delete(){
+
+	var stdcdType = $("#stdcd_type").val();
+	var stdCd = $("#std_cd").val();
+	var form = document.JLDINF91100;
+
+	$("#mod_del_cd").val("del");
+	fn_passwordWin(form);
+}
+
+
+//정보 수정
+function go_modify(){
+	var stdcdType = $("#stdcd_type").val();
+	var stdCd = $("#std_cd").val();
+	var form = document.JLDINF91100;
+	form.action = "/stdcd/stdcdModify.do?method=stdcdModify";
+	form.target="_top";
+	form.submit();	
+}
+//삭제
+function go_delete(){
+	var stdcdType = $("#stdcd_type").val();
+	var stdCd = $("#std_cd").val();
+	var form = document.JLDINF91100;
+	fn_stdCdDelWin(form);
+	self.close();
+}
+
+//인쇄
+function fn_print()
+{
+	if( !confirm("채권 상세정보를 출력하시겠습니까?") )
+	{
+		return false;
+	}else{
+		var formName = document.JLDINF91100;
+
+		var std_cd = formName.std_cd.value;
+		
+		var rexName = "JLDINF91100";
+		var dataType = "XML";
+		var dataLocation = "/srch/srch.do?method=srchReport3&std_cd="+std_cd;
+		var dataXPath = "main/rpt1";
+		var mktGubun = "1";
+
+		// 인쇄 미리보기
+		fn_PrintPreView_DB(rexName, dataType, dataLocation, dataXPath);
+	}
+}
+
+</script>
+<form method="post" name="JLDINF91100">
+<input id="type" name="type" type="hidden" value="3"/>
+<input id="stdcd_type" name="stdcd_type" type="hidden" value="3"/>
+<input id="std_cd" name="std_cd" type="hidden" value="KR103501GA68"/>
+<input id="mod_del_cd" name="mod_del_cd" type="hidden" value=""/>
+<input id="isu_nm" name="isu_nm" type="hidden" value="국고채권"/>
+</form>
+<!-- 신용평가 처리 시작 -->
+<!-- 신용평가 처리 끝 -->
+<div id="wrapper-pop">
+<h2 class="ttl type-01 popup">채권 상세정보</h2>
+<div class="article contents-pop">
+<div class="clear"></div>
+<table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>발행기관코드</th><td>GB035</td>
+<th>발행기관명</th><td class="last">국고채권</td>
+</tr>
+<tr>
+<th>표준코드</th><td><strong class="type-00">KR103501GA68</strong></td>
+<th>단축코드</th><td class="last">C03501GA6</td>
+</tr>
+<tr>
+<th>채권분류</th><td>국고채권 (111100)</td>
+<th>변경전 발행기관코드</th><td class="last"></td>
+</tr>
+<tr>
+<th>상장여부</th><td>상장</td>
+<th>활성여부</th><td class="last">활성</td>
+</tr>
+<tr>
+<th>상장일</th><td>2020-03-31</td>
+<th>상장폐지일</th><td class="last"></td>
+</tr>
+<tr>
+<th>한글종목명</th><td class="last" colspan="3">국고채권 01000-2306(20-3)</td>
+</tr>
+<tr>
+<th>영문종목명</th><td class="last" colspan="3">KOREA TREASURY BOND 01000-2306(20-3)</td>
+</tr>
+<tr>
+<th>채권유형</th><td>국채</td>
+<th>지방채구분</th><td class="last"></td>
+</tr>
+<tr>
+<th>발행금액</th><td>19,722,000,000,000</td>
+<th>발행일</th><td class="last">2020-06-10</td>
+</tr>
+<tr class="last">
+<th>발행통화</th><td>원화</td>
+<th>상환일</th><td class="last">2023-06-10</td>
+</tr>
+</tbody>
+</table>
+<table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>특이채권유형</th><td class="last" colspan="3">일반채권</td>
+</tr>
+<tr>
+<th>보증담보</th><td>무보증</td>
+<th>보증률(%)</th><td class="last"></td>
+</tr>
+<tr>
+<th>이자지급방법</th>
+<td class="last" colspan="3">고정금리형-이표채</td>
+</tr>
+<tr>
+<th>발행방법</th>
+<td>공모-직접발행</td>
+<th>발행구분</th><td class="last">국내발행</td>
+</tr>
+<tr class="last">
+<th>크라우드펀딩여부</th>
+<td>NO</td>
+<th>SRI채권 신청구분</th>
+<td class="last">
+</td>
+</tr>
+</tbody>
+</table>
+<table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>표면이자율 확정여부</th><td class="last" colspan="3">확정</td>
+</tr>
+<tr>
+<th>표면이자율(%)</th><td>1</td>
+<th>낙찰금리(%)</th><td class="last">1.065</td>
+</tr>
+<tr>
+<th>발행가액(%)</th><td class="last">100</td>
+<th>만기상환율(%)</th><td class="last">100</td>
+</tr>
+<tr class="last">
+<th>특이발행조건</th><td class="last" colspan="3"></td>
+</tr>
+</tbody>
+</table>
+<table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>옵션</th><td></td>
+<th>선/후/중순위</th><td class="last">선순위</td>
+</tr>
+<tr>
+<th>상환방법</th><td class="last" colspan="3">만기상환</td>
+</tr>
+<tr>
+<th>물가연동구분</th><td>NO</td>
+<th>참조지수(%)</th><td class="last"></td>
+</tr>
+<tr>
+<th>신종자본증권여부</th><td>NO</td>
+<th>조건부자본증권 유형</th><td class="last"></td>
+</tr>
+<tr class="last">
+<th>유동화</th><td class="last" colspan="3"></td>
+</tr>
+</tbody>
+</table>
+<table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>휴무관련(원금)</th><td class="last" colspan="3">직전영업일(경과이자없음)</td>
+</tr>
+<tr>
+<th>이자지급기준</th><td></td>
+<th>경과금리(%)</th><td class="last"></td>
+</tr>
+<tr>
+<th>휴무관련(이자)</th><td class="last" colspan="3">직전영업일(경과이자없음)</td>
+</tr>
+<tr class="last">
+<th>이자지급기준</th><td></td>
+<th>경과금리(%)</th><td class="last"></td>
+</tr>
+</tbody>
+</table>
+<table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>이자 선/후급</th><td>후급</td>
+<th>이자지급주기(개월)</th><td class="last">6</td>
+</tr>
+<tr>
+<th>이자지급기준일구분</th><td>발행일</td>
+<th>이자계산주기(개월)</th><td class="last">6</td>
+</tr>
+<tr>
+<th>이자원단위 미만처리</th><td>절사</td>
+<th>이자월말구분</th><td class="last">일자기준</td>
+</tr>
+<tr class="last">
+<th>단수일이자기준</th><td></td>
+<th>최초이자지급일</th><td class="last">2020-12-10</td>
+</tr>
+</tbody>
+</table>
+<table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>발행전국채거래</th><td class="last" colspan="3">선매출시장</td>
+</tr>
+<tr>
+<th>매출형태</th><td>선매출</td>
+<th>선매출이자 지급방법</th><td class="last">매출시(국고채 유형)</td>
+</tr>
+<tr>
+<th>선/후매출일</th><td>2020-03-31</td>
+<th>기명구분</th><td class="last">무기명</td>
+</tr>
+<tr>
+<th>보장수익률(%)</th><td></td>
+<th>보장수익률적용일</th><td class="last"></td>
+</tr>
+<tr class="last">
+<th>추가수익률(%)</th><td></td>
+<th>추가수익률적용일</th><td class="last"></td>
+</tr>
+</tbody>
+</table>
+<table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>(전자)등록기관</th><td>한국은행</td>
+<th>원리금지급대행기관</th><td class="last">한국은행</td>
+</tr>
+<tr>
+<th>대표주관회사</th><td></td>
+<th>보증기관</th><td class="last"></td>
+</tr>
+<tr>
+<th>신용평가기관1</th><td></td><th>신용등급</th><td class="last"> </td>
+</tr>
+<tr>
+<th>신용평가기관2</th><td></td><th>신용등급</th><td class="last"> </td>
+</tr>
+<tr>
+<th>신용평가기관3</th><td></td><th>신용등급</th><td class="last"> </td>
+</tr>
+<tr class="last">
+<th>신용평가기관4</th><td></td><th>신용등급</th><td class="last"> </td>
+</tr>
+</tbody>
+</table>
+<table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>CFI</th><td class="last" colspan="3">DBFUFB</td>
+</tr>
+<tr class="last">
+<th>FISN</th><td class="last" colspan="3">KTB/1.0 Bd 20230610 Sr Ungtd</td>
+</tr>
+</tbody>
+</table>
+<h3 class="ttl type-00" id="title_nusual_bnd_tp_cd" style="display:none;">주식관련사채 상세</h3>
+<table class="type-01 detail mt5" id="id_nusual_bnd_tp_cd" style="display:none;" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>권리구분</th><td class="last" colspan="2"></td>
+</tr>
+<tr>
+<th>누적여부</th><td class="last" colspan="2"></td>
+</tr>
+<tr class="last">
+<th rowspan="8">행사조건</th><th>대상주식명</th><td class="last"></td>
+</tr>
+<tr>
+<th>행사가격</th><td class="last"></td>
+</tr>
+<tr>
+<th>행사비율(%)</th><td class="last"></td>
+</tr>
+<tr>
+<th>행사개시일</th><td class="last"></td>
+</tr>
+<tr>
+<th>행사종료일</th><td class="last"></td>
+</tr>
+<tr>
+<th>납입방법</th><td class="last"></td>
+</tr>
+<tr>
+<th>청구기관</th><td class="last"></td>
+</tr>
+<tr class="last">
+<th>배당기산일구분</th><td class="last"></td>
+</tr>
+</tbody>
+</table>
+<h3 class="ttl type-00" id="title_int_pay_methd_cd" style="display:none">변동금리형(금리연동)</h3>
+<table class="type-01 detail mt5" id="id_int_pay_methd_cd" style="display:none" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>이자율결정기준금리</th>
+<td class="last" colspan="3">
+</td>
+</tr>
+<tr>
+<th>기타기준금리</th><td></td><th>가산금리(%)</th><td class="last"></td>
+</tr>
+<tr>
+<th>이자율결정시점</th><td></td><th>이자율결정기준일</th><td class="last"></td>
+</tr>
+<tr class="last">
+<th>최대이자율(%)</th><td></td><th>최소이자율(%)</th><td class="last"></td>
+</tr>
+</tbody>
+</table>
+<h3 class="ttl type-00" id="title_option" style="display:none;">옵션 상세</h3>
+<table class="type-01 detail mt5" id="id_call_option" style="display:none;" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>Call 주체</th><td class="last" colspan="2"></td>
+</tr>
+<tr>
+<th>Call 사유</th><td class="last" colspan="2"></td>
+</tr>
+<tr>
+<th class="txc">차수</th><th class="txc">Call 신청개시일</th><th class="last txc">Call 신청종료일</th>
+</tr>
+<tr class="last">
+<td class="last txc" colspan="3" style="border:solid 1px; border-color:#cacaca;">데이터가 없습니다.</td>
+</tr>
+</tbody>
+</table>
+<table class="type-01 detail mt5" id="id_put_option" style="display:none;" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>Put 주체</th><td class="last" colspan="2"></td>
+</tr>
+<tr>
+<th>Put 사유</th><td class="last" colspan="2"></td>
+</tr>
+<tr>
+<th class="txc">차수</th><th class="txc">Put 신청개시일</th><th class="last txc">Put 신청종료일</th>
+</tr>
+<tr class="last">
+<td class="last txc" colspan="3" style="border:solid 1px; border-color:#cacaca;">데이터가 없습니다.</td>
+</tr>
+</tbody>
+</table>
+<h3 class="ttl type-00" id="title_redmpt_methd_tp_cd" style="display:none;">상환방법</h3>
+<table class="type-01 detail mt5" id="id_redmpt_methd_tp_cd" style="display:none;" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>균등상환액</th><td></td>
+<th>거치기간(개월)</th><td class="last"></td>
+</tr>
+<tr class="last">
+<th>거치기간이자</th><td></td>
+<th>분할상환횟수</th><td class="last"></td>
+</tr>
+</tbody>
+</table>
+<table class="type-01 detail mt5" id="id_redmpt_methd_tp_cd_list" style="display:none;" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 150px;"/>
+<col style="width: *;"/>
+<col style="width: *;"/>
+<col style="width: *;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th class="txc">차수</th>
+<th class="txc">이자지급일</th>
+<th class="txc">상환금액</th>
+<th class="txc">이자율</th>
+<th class="last txc">거치기간</th>
+</tr>
+<tr class="last">
+<td class="last txc" colspan="5" style="border:solid 1px; border-color:#cacaca;">데이터가 없습니다.</td>
+</tr>
+</tbody>
+</table>
+<h3 class="ttl type-00" id="title_asst_secutiz_tp_cd" style="display:none;">유동화채권 상세</h3>
+<table class="type-01 detail mt5" id="id_asst_secutiz_tp_cd" style="display:none;" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width:	170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th rowspan="4">유동화</th><th>업무수탁자(관리기관)</th><td class="last"></td>
+</tr>
+<tr>
+<th>담당자</th><td class="last"></td>
+</tr>
+<tr>
+<th>전화번호</th><td class="last"></td>
+</tr>
+<tr>
+<th>이메일</th><td class="last"></td>
+</tr>
+<tr>
+<th rowspan="4">자산보유자</th><th>기관 1</th><td class="last"></td>
+</tr>
+<tr>
+<th>기관 2</th><td class="last"></td>
+</tr>
+<tr>
+<th>기관 3</th><td class="last"></td>
+</tr>
+<tr>
+<th>기타</th><td class="last"></td>
+</tr>
+<tr>
+<th rowspan="4">자산보유자 유형</th><th>유형 1</th><td class="last"></td>
+</tr>
+<tr>
+<th>유형 2</th><td class="last"></td>
+</tr>
+<tr>
+<th>유형 3</th><td class="last"></td>
+</tr>
+<tr>
+<th>기타</th><td class="last"></td>
+</tr>
+<tr>
+<th rowspan="4">유동화자산 유형</th><th>유형 1</th><td class="last"></td>
+</tr>
+<tr>
+<th>유형 2</th><td class="last"></td>
+</tr>
+<tr>
+<th>유형 3</th><td class="last"></td>
+</tr>
+<tr>
+<th>기타</th><td class="last"></td>
+</tr>
+<tr>
+<th colspan="2">유동화계획 발행총액</th><td class="last">0</td>
+</tr>
+<tr>
+<th colspan="2">유동화계획 총평가액</th><td class="last">0</td>
+</tr>
+<tr>
+<th rowspan="4">자산관리자</th><th>기관 1</th><td class="last"></td>
+</tr>
+<tr>
+<th>기관 2</th><td class="last"></td>
+</tr>
+<tr>
+<th>기관 3</th><td class="last"></td>
+</tr>
+<tr>
+<th>기타</th><td class="last"></td>
+</tr>
+<tr>
+<th colspan="2">신용보강방법</th><td class="last"></td>
+</tr>
+<tr class="last">
+<th colspan="2">기타메모</th><td class="last"></td>
+</tr>
+</tbody>
+</table>
+<div class="txr mt5"><a href="#top">맨 위로</a></div>
+<div class="btn-group type-00">
+<!-- a href="#" class="btn-sprite type-10 vmiddle" onclick="fn_print();"><span>인 쇄</span></a> -->
+<a class="btn-sprite type-10 vmiddle" href="#" onclick="self.close();"><span>닫 기</span></a>
+</div>
+<br/><br/>
+</div>
+</div></td>
+</tr>
+</tbody></table>, <table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>발행기관코드</th><td>GB035</td>
+<th>발행기관명</th><td class="last">국고채권</td>
+</tr>
+<tr>
+<th>표준코드</th><td><strong class="type-00">KR103501GA68</strong></td>
+<th>단축코드</th><td class="last">C03501GA6</td>
+</tr>
+<tr>
+<th>채권분류</th><td>국고채권 (111100)</td>
+<th>변경전 발행기관코드</th><td class="last"></td>
+</tr>
+<tr>
+<th>상장여부</th><td>상장</td>
+<th>활성여부</th><td class="last">활성</td>
+</tr>
+<tr>
+<th>상장일</th><td>2020-03-31</td>
+<th>상장폐지일</th><td class="last"></td>
+</tr>
+<tr>
+<th>한글종목명</th><td class="last" colspan="3">국고채권 01000-2306(20-3)</td>
+</tr>
+<tr>
+<th>영문종목명</th><td class="last" colspan="3">KOREA TREASURY BOND 01000-2306(20-3)</td>
+</tr>
+<tr>
+<th>채권유형</th><td>국채</td>
+<th>지방채구분</th><td class="last"></td>
+</tr>
+<tr>
+<th>발행금액</th><td>19,722,000,000,000</td>
+<th>발행일</th><td class="last">2020-06-10</td>
+</tr>
+<tr class="last">
+<th>발행통화</th><td>원화</td>
+<th>상환일</th><td class="last">2023-06-10</td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>특이채권유형</th><td class="last" colspan="3">일반채권</td>
+</tr>
+<tr>
+<th>보증담보</th><td>무보증</td>
+<th>보증률(%)</th><td class="last"></td>
+</tr>
+<tr>
+<th>이자지급방법</th>
+<td class="last" colspan="3">고정금리형-이표채</td>
+</tr>
+<tr>
+<th>발행방법</th>
+<td>공모-직접발행</td>
+<th>발행구분</th><td class="last">국내발행</td>
+</tr>
+<tr class="last">
+<th>크라우드펀딩여부</th>
+<td>NO</td>
+<th>SRI채권 신청구분</th>
+<td class="last">
+</td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>표면이자율 확정여부</th><td class="last" colspan="3">확정</td>
+</tr>
+<tr>
+<th>표면이자율(%)</th><td>1</td>
+<th>낙찰금리(%)</th><td class="last">1.065</td>
+</tr>
+<tr>
+<th>발행가액(%)</th><td class="last">100</td>
+<th>만기상환율(%)</th><td class="last">100</td>
+</tr>
+<tr class="last">
+<th>특이발행조건</th><td class="last" colspan="3"></td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>옵션</th><td></td>
+<th>선/후/중순위</th><td class="last">선순위</td>
+</tr>
+<tr>
+<th>상환방법</th><td class="last" colspan="3">만기상환</td>
+</tr>
+<tr>
+<th>물가연동구분</th><td>NO</td>
+<th>참조지수(%)</th><td class="last"></td>
+</tr>
+<tr>
+<th>신종자본증권여부</th><td>NO</td>
+<th>조건부자본증권 유형</th><td class="last"></td>
+</tr>
+<tr class="last">
+<th>유동화</th><td class="last" colspan="3"></td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>휴무관련(원금)</th><td class="last" colspan="3">직전영업일(경과이자없음)</td>
+</tr>
+<tr>
+<th>이자지급기준</th><td></td>
+<th>경과금리(%)</th><td class="last"></td>
+</tr>
+<tr>
+<th>휴무관련(이자)</th><td class="last" colspan="3">직전영업일(경과이자없음)</td>
+</tr>
+<tr class="last">
+<th>이자지급기준</th><td></td>
+<th>경과금리(%)</th><td class="last"></td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>이자 선/후급</th><td>후급</td>
+<th>이자지급주기(개월)</th><td class="last">6</td>
+</tr>
+<tr>
+<th>이자지급기준일구분</th><td>발행일</td>
+<th>이자계산주기(개월)</th><td class="last">6</td>
+</tr>
+<tr>
+<th>이자원단위 미만처리</th><td>절사</td>
+<th>이자월말구분</th><td class="last">일자기준</td>
+</tr>
+<tr class="last">
+<th>단수일이자기준</th><td></td>
+<th>최초이자지급일</th><td class="last">2020-12-10</td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>발행전국채거래</th><td class="last" colspan="3">선매출시장</td>
+</tr>
+<tr>
+<th>매출형태</th><td>선매출</td>
+<th>선매출이자 지급방법</th><td class="last">매출시(국고채 유형)</td>
+</tr>
+<tr>
+<th>선/후매출일</th><td>2020-03-31</td>
+<th>기명구분</th><td class="last">무기명</td>
+</tr>
+<tr>
+<th>보장수익률(%)</th><td></td>
+<th>보장수익률적용일</th><td class="last"></td>
+</tr>
+<tr class="last">
+<th>추가수익률(%)</th><td></td>
+<th>추가수익률적용일</th><td class="last"></td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>(전자)등록기관</th><td>한국은행</td>
+<th>원리금지급대행기관</th><td class="last">한국은행</td>
+</tr>
+<tr>
+<th>대표주관회사</th><td></td>
+<th>보증기관</th><td class="last"></td>
+</tr>
+<tr>
+<th>신용평가기관1</th><td></td><th>신용등급</th><td class="last"> </td>
+</tr>
+<tr>
+<th>신용평가기관2</th><td></td><th>신용등급</th><td class="last"> </td>
+</tr>
+<tr>
+<th>신용평가기관3</th><td></td><th>신용등급</th><td class="last"> </td>
+</tr>
+<tr class="last">
+<th>신용평가기관4</th><td></td><th>신용등급</th><td class="last"> </td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>CFI</th><td class="last" colspan="3">DBFUFB</td>
+</tr>
+<tr class="last">
+<th>FISN</th><td class="last" colspan="3">KTB/1.0 Bd 20230610 Sr Ungtd</td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" id="id_nusual_bnd_tp_cd" style="display:none;" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>권리구분</th><td class="last" colspan="2"></td>
+</tr>
+<tr>
+<th>누적여부</th><td class="last" colspan="2"></td>
+</tr>
+<tr class="last">
+<th rowspan="8">행사조건</th><th>대상주식명</th><td class="last"></td>
+</tr>
+<tr>
+<th>행사가격</th><td class="last"></td>
+</tr>
+<tr>
+<th>행사비율(%)</th><td class="last"></td>
+</tr>
+<tr>
+<th>행사개시일</th><td class="last"></td>
+</tr>
+<tr>
+<th>행사종료일</th><td class="last"></td>
+</tr>
+<tr>
+<th>납입방법</th><td class="last"></td>
+</tr>
+<tr>
+<th>청구기관</th><td class="last"></td>
+</tr>
+<tr class="last">
+<th>배당기산일구분</th><td class="last"></td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" id="id_int_pay_methd_cd" style="display:none" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>이자율결정기준금리</th>
+<td class="last" colspan="3">
+</td>
+</tr>
+<tr>
+<th>기타기준금리</th><td></td><th>가산금리(%)</th><td class="last"></td>
+</tr>
+<tr>
+<th>이자율결정시점</th><td></td><th>이자율결정기준일</th><td class="last"></td>
+</tr>
+<tr class="last">
+<th>최대이자율(%)</th><td></td><th>최소이자율(%)</th><td class="last"></td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" id="id_call_option" style="display:none;" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>Call 주체</th><td class="last" colspan="2"></td>
+</tr>
+<tr>
+<th>Call 사유</th><td class="last" colspan="2"></td>
+</tr>
+<tr>
+<th class="txc">차수</th><th class="txc">Call 신청개시일</th><th class="last txc">Call 신청종료일</th>
+</tr>
+<tr class="last">
+<td class="last txc" colspan="3" style="border:solid 1px; border-color:#cacaca;">데이터가 없습니다.</td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" id="id_put_option" style="display:none;" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>Put 주체</th><td class="last" colspan="2"></td>
+</tr>
+<tr>
+<th>Put 사유</th><td class="last" colspan="2"></td>
+</tr>
+<tr>
+<th class="txc">차수</th><th class="txc">Put 신청개시일</th><th class="last txc">Put 신청종료일</th>
+</tr>
+<tr class="last">
+<td class="last txc" colspan="3" style="border:solid 1px; border-color:#cacaca;">데이터가 없습니다.</td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" id="id_redmpt_methd_tp_cd" style="display:none;" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+<col style="width: 170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th>균등상환액</th><td></td>
+<th>거치기간(개월)</th><td class="last"></td>
+</tr>
+<tr class="last">
+<th>거치기간이자</th><td></td>
+<th>분할상환횟수</th><td class="last"></td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" id="id_redmpt_methd_tp_cd_list" style="display:none;" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 150px;"/>
+<col style="width: *;"/>
+<col style="width: *;"/>
+<col style="width: *;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th class="txc">차수</th>
+<th class="txc">이자지급일</th>
+<th class="txc">상환금액</th>
+<th class="txc">이자율</th>
+<th class="last txc">거치기간</th>
+</tr>
+<tr class="last">
+<td class="last txc" colspan="5" style="border:solid 1px; border-color:#cacaca;">데이터가 없습니다.</td>
+</tr>
+</tbody>
+</table>, <table class="type-01 detail mt5" id="id_asst_secutiz_tp_cd" style="display:none;" summary="상세조회">
+<caption>상세조회</caption>
+<colgroup>
+<col style="width: 170px;"/>
+<col style="width:	170px;"/>
+<col style="width: *;"/>
+</colgroup>
+<tbody>
+<tr>
+<th rowspan="4">유동화</th><th>업무수탁자(관리기관)</th><td class="last"></td>
+</tr>
+<tr>
+<th>담당자</th><td class="last"></td>
+</tr>
+<tr>
+<th>전화번호</th><td class="last"></td>
+</tr>
+<tr>
+<th>이메일</th><td class="last"></td>
+</tr>
+<tr>
+<th rowspan="4">자산보유자</th><th>기관 1</th><td class="last"></td>
+</tr>
+<tr>
+<th>기관 2</th><td class="last"></td>
+</tr>
+<tr>
+<th>기관 3</th><td class="last"></td>
+</tr>
+<tr>
+<th>기타</th><td class="last"></td>
+</tr>
+<tr>
+<th rowspan="4">자산보유자 유형</th><th>유형 1</th><td class="last"></td>
+</tr>
+<tr>
+<th>유형 2</th><td class="last"></td>
+</tr>
+<tr>
+<th>유형 3</th><td class="last"></td>
+</tr>
+<tr>
+<th>기타</th><td class="last"></td>
+</tr>
+<tr>
+<th rowspan="4">유동화자산 유형</th><th>유형 1</th><td class="last"></td>
+</tr>
+<tr>
+<th>유형 2</th><td class="last"></td>
+</tr>
+<tr>
+<th>유형 3</th><td class="last"></td>
+</tr>
+<tr>
+<th>기타</th><td class="last"></td>
+</tr>
+<tr>
+<th colspan="2">유동화계획 발행총액</th><td class="last">0</td>
+</tr>
+<tr>
+<th colspan="2">유동화계획 총평가액</th><td class="last">0</td>
+</tr>
+<tr>
+<th rowspan="4">자산관리자</th><th>기관 1</th><td class="last"></td>
+</tr>
+<tr>
+<th>기관 2</th><td class="last"></td>
+</tr>
+<tr>
+<th>기관 3</th><td class="last"></td>
+</tr>
+<tr>
+<th>기타</th><td class="last"></td>
+</tr>
+<tr>
+<th colspan="2">신용보강방법</th><td class="last"></td>
+</tr>
+<tr class="last">
+<th colspan="2">기타메모</th><td class="last"></td>
+</tr>
+</tbody>
+</table>]
